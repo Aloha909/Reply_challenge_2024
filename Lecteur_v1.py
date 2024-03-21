@@ -63,9 +63,3 @@ class Lecteur_v1():
 
     def get_tile(self, x, y):
         return self.tiles.get((x, y), Tile("0", x, y))
-
-    def export(self):
-        with open("output.txt", "w") as file:
-            for (x, y) in self.tiles.keys():
-                if self.get_tile(x, y) != Tile("0", x, y):
-                    file.write(f"{self.get_tile(x, y)} {x} {y}\n")
