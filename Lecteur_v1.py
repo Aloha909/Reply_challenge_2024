@@ -63,9 +63,3 @@ class Lecteur_v1():
 
     def get_tile(self, x, y):
         return self.tiles.get((x, y), Tile("0", x, y))
-
-
-lecteur = Lecteur_v1("00-trailer.txt")
-lecteur.process_data()
-lecteur.place_tile(Tile("3", 3, 4))
-print(lecteur.get_tile(3, 4).get_coords())
