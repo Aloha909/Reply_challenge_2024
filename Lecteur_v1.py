@@ -47,11 +47,11 @@ class Lecteur_v1():
 
         temp_data = temp_data[self.nb_silver_point:]
 
-        self.costs = []
-        self.tiles_av = {}
+        self.costs = dict()
+        self.tiles_av = dict()
         for i in range(self.nb_types_av):
             identifier, cost, number_available = temp_data[i]
-            self.costs.append(cost)
+            self.costs[identifier] = int(cost)
             self.tiles_av[identifier] = int(number_available)
         
     
