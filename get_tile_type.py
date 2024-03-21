@@ -1,5 +1,6 @@
 from next_tile import next_tile, next_dir
 from Lecteur_v1 import Lecteur_v1
+from Tiles import Tile
 
 def next_coord(direction, x, y):
         if direction == "N":
@@ -12,7 +13,7 @@ def next_coord(direction, x, y):
             return x - 1, y
         
 def goal_reached(x, y, x_goal, y_goal):
-    if abs(x - x_goal) == 1 and abs(y - y_goal) == 1:
+    if abs(x - x_goal) == 1 and abs(y - y_goal) == 0 or abs(x - x_goal) == 0 and abs(y - y_goal) == 1:
         return True
     else:
         return False
@@ -31,26 +32,31 @@ def find_path(lecteur: Lecteur_v1, x_start, y_start, x_end, y_end, path = []):
     nextx, nexty = next_coord(dir, x_start, y_start)
     next_direction = next_dir(nextx, nexty, x_end, y_end)
     next_tiles = next_tile(dir, next_direction, lecteur.costs, lecteur.tiles_av)
-    print(next_tiles)
-    print(dir, next_direction, lecteur.costs, lecteur.tiles_av)
     if next_tiles == []:
         print("No path found")
         return path
     else:
-        path.append(next_tiles[0][0])
+        path.append(Tile(next_tiles[0][0], nextx, nexty))
+        lecteur.place_tile(Tile(next_tiles[0][0], nextx, nexty))
         if goal_reached(nextx, nexty, x_end, y_end):
             print("got to the end")
             return path
         else:
             
             return find_path(lecteur, nextx, nexty, x_end, y_end, path)
+        
+
 
 lecteur = Lecteur_v1("00-trailer.txt")
 lecteur.process_data()
 point1 = lecteur.golden_points[0]
 point2 = lecteur.golden_points[1]
+point3 = lecteur.golden_points[2]
 x1,y1 = point1.get_coords()
 x2,y2 = point2.get_coords()
-print(find_path(lecteur, x1, y1, x2, y2))
+x3,y3 = point3.get_coords()
+find_path(lecteur, x1, y1, x2, y2)
+find_path(lecteur, x2, y2, x3, y3)
+lecteur.export()
 
 

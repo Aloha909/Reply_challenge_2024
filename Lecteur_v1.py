@@ -53,7 +53,6 @@ class Lecteur_v1():
             identifier, cost, number_available = temp_data[i]
             self.costs[identifier] = int(cost)
             self.tiles_av[identifier] = int(number_available)
-        
     
     def place_tile(self, tile: Tile):
         if self.tiles_av[tile.type] <= 0:
@@ -63,7 +62,7 @@ class Lecteur_v1():
 
     def get_tile(self, x, y):
         return self.tiles.get((x, y), Tile("0", x, y))
-
+    
     def export(self):
         with open("output.txt", "w") as file:
             for (x, y) in self.tiles.keys():

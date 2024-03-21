@@ -2,6 +2,7 @@ import tkinter as tk
 from Lecteur_v1 import Lecteur_v1
 from Grid import Grid
 from Tiles import Tile
+from get_tile_type import find_path
 
 
 class Interface(tk.Tk):
@@ -58,7 +59,13 @@ class Interface(tk.Tk):
             arrivees = tile.outputs(depart)
             for arrivee in arrivees:
                 self.canvas.create_line(self.get_delta(depart, x * 20, y * 20), (x * 20 +10, y * 20 + 10), fill="black")
-                self.canvas.create_line((x * 20 + 10, y * 20 + 10), self.get_delta(arrivee, x * 20, y * 20), fill="black")     
+                self.canvas.create_line((x * 20 + 10, y * 20 + 10), self.get_delta(arrivee, x * 20, y * 20), fill="black")
+
+    def dessine_path(self, path):
+        for i in range(len(path) - 1):
+            x1, y1 = path[i].get_coords()
+            x2, y2 = path[i + 1].get_coords()
+            self.canvas.create_line(x1 * 20 + 10, y1 * 20 + 10, x2 * 20 + 10, y2 * 20 + 10, fill="red")     
                 
                 
 

@@ -26,3 +26,6 @@ class Tile:
     
     def get_coords(self):
         return self.x, self.y
+    
+    def __repr__(self) -> str:
+        return self.type
