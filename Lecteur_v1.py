@@ -2,7 +2,7 @@ from Point import GoldenPoint, SilverPoint
 
 class Lecteur_v1():
 
-    __slots__ = ["path", "data", "width", "height", "nb_golden_point", "nb_silver_point", "nb_tiles_av", "golden_points", "silver_points", "tiles_av", "costs", "available_tiles"]
+    __slots__ = ["path", "data", "width", "height", "nb_golden_point", "nb_silver_point", "nb_types_av", "golden_points", "silver_points", "tiles_av", "costs", "tiles_av"]
 
     def __init__(self, path):
         self.path: str = path
@@ -26,7 +26,7 @@ class Lecteur_v1():
         self.height: int = int(self.data[0][1])
         self.nb_golden_point: int = int(self.data[0][2])
         self.nb_silver_point: int = int(self.data[0][3])
-        self.nb_tiles_av: int = int(self.data[0][4])
+        self.nb_types_av: int = int(self.data[0][4])
         temp_data = temp_data[1:]
 
         self.golden_points = []
@@ -45,8 +45,8 @@ class Lecteur_v1():
         temp_data = temp_data[self.nb_silver_point:]
 
         self.costs = []
-        self.available_tiles = {}
-        for i in range(self.nb_tiles_av):
+        self.tiles_av = {}
+        for i in range(self.nb_types_av):
             identifier, cost, number_available = temp_data[i]
             self.costs.append(cost)
-            self.available_tiles[identifier] = number_available
+            self.tiles_av[identifier] = number_available
