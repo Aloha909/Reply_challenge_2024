@@ -6,6 +6,9 @@ class GoldenPoint():
         self.x: int = x
         self.y: int = y
 
+    def get_coords(self):
+        return self.x, self.y
+
 
 
 class SilverPoint():
@@ -16,3 +19,9 @@ class SilverPoint():
         self.x: int = x
         self.y: int = y
         self.value: int = value
+    
+    def get_coords(self):
+        return self.x, self.y
+
+    def get_value(self):
+        return self.value

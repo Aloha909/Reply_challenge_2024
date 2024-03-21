@@ -16,6 +16,9 @@ class Lecteur_v1():
 
             for i in range(len(self.data)):
                 self.data[i] = self.data[i].split(" ")
+    
+    def __str__(self) -> str:
+        return str(self.data)
         
     def process_data(self):
         temp_data = self.data.copy()
@@ -26,13 +29,17 @@ class Lecteur_v1():
         self.nb_tiles_av: int = int(self.data[0][4])
         temp_data = temp_data[1:]
 
+        self.golden_points = []
         for i in range(self.nb_golden_point):
             x, y = temp_data[i]
-            self.golden_points = GoldenPoint(int(x), int(y))
+            self.golden_points.append(GoldenPoint(int(x), int(y)))
+        
         temp_data = temp_data[self.nb_golden_point:]
 
+
+        self.silver_points = []
         for i in range(self.nb_silver_point):
             x, y, value = temp_data[i]
-            self.silver_points = SilverPoint(int(x), int(y), int(value))
+            self.silver_points.append(SilverPoint(int(x), int(y), int(value)))
+
         temp_data = temp_data[self.nb_silver_point:]
-        
