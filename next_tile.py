@@ -15,7 +15,7 @@ def next_tile(entree: str, sortie: str, costs: dict, available_tiles: dict[str:i
     working_tiles = []
     for tile_type in available_tiles.keys():
         if available_tiles[tile_type] > 0 :
-            if sortie in Tile(tile_type).outputs(entree):
+            if sortie in Tile(tile_type).outputs(complementaire(entree)):
                 working_tiles.append((tile_type, costs[tile_type]))
     working_tiles.sort(key=lambda el: el[1])
     return working_tiles
