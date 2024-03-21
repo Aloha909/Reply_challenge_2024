@@ -17,3 +17,17 @@ def next_tile(entree: str, sortie: str, costs: dict, available_tiles: dict[str:i
                 working_tiles.append((tile_type, costs[tile_type]))
     working_tiles.sort(key=lambda el: el[1])
     return working_tiles
+
+
+def next_dir(x_start, y_start, x_end, y_end):
+    lateral = abs(y_end - y_start) < abs(x_end - x_start)
+    if lateral:
+        if x_end > x_start :
+            return "x_pos"
+        elif x_end < x_start :
+            return "x_neg"
+    else :
+        if y_end > y_start :
+            return "y_pos"
+        elif y_end < y_start :
+            return "y_neg"
