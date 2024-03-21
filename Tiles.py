@@ -1,6 +1,9 @@
-class Tiles:
+from Lecteur_v1 import Lecteur_v1
+
+class Tile:
     def __init__(self, type):
         tiles = {}
+        tiles['0'] = {"N": [], "W": [], "E": [], "S": []}
         tiles['3'] = {"N": [], "W": ['E'], "E": ['W'], "S": []}
         tiles['5'] = {"N": [], "W": [], "E": ['S'], "S": ['E']}
         tiles['6'] = {"N": [], "W": ['S'], "E": [], "S": ['W']}
