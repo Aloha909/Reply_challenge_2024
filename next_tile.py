@@ -31,7 +31,6 @@ def next_dir(x_start, y_start, x_end, y_end):
             return "N"
         elif y_end < y_start :
             return "S"
-
 def goal_reached(x:int, y:int, x_goal:int, y_goal:int) -> bool:
     if abs(x_goal - x) == 1 and abs(y_goal - y) == 1:
         return True
