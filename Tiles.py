@@ -1,7 +1,5 @@
-from Lecteur_v1 import Lecteur_v1
-
 class Tile:
-    def __init__(self, type):
+    def __init__(self, type, x = 0, y = 0):
         tiles = {}
         tiles['0'] = {"N": [], "W": [], "E": [], "S": []}
         tiles['3'] = {"N": [], "W": ['E'], "E": ['W'], "S": []}
@@ -20,6 +18,11 @@ class Tile:
         tiles['C3'] = {"N": ['S'], "W": ['E'], "E": ['W'], "S": ['N']}
         self.type = type
         self.directions = tiles[type]
+        self.x = x
+        self.y = y
 
     def outputs(self, entree):
         return self.directions[entree]
+    
+    def get_coords(self):
+        return self.x, self.y

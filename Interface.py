@@ -34,6 +34,12 @@ class Interface(tk.Tk):
             id = self.canvas.find_closest(x * 20 + 10, y * 20 + 10)
             self.canvas.itemconfig(id, fill="grey")
 
+    def fill_grid_with_tile(self):
+        for i in range(self.lecteur.nb_tiles_av):
+            x, y = self.lecteur.tiles_av[i]
+            id = self.canvas.find_closest(x * 20 + 10, y * 20 + 10)
+            self.canvas.itemconfig(id, fill="blue")
+
 if __name__ == "__main__":
     lecteur = Lecteur_v1("00-trailer.txt")
     lecteur.process_data()
