@@ -11,7 +11,7 @@ def next_tile(entree: str, sortie: str, costs: dict, available_tiles: dict[str:i
     :return: liste des tuiles possibles par cout croissant
     """
     working_tiles = []
-    for tile_type in [available_tiles.keys()]:
+    for tile_type in available_tiles.keys():
         if available_tiles[tile_type] > 0 :
             if sortie in Tile(tile_type).outputs(entree):
                 working_tiles.append((tile_type, costs[tile_type]))
@@ -31,3 +31,9 @@ def next_dir(x_start, y_start, x_end, y_end):
             return "N"
         elif y_end < y_start :
             return "S"
+
+def goal_reached(x:int, y:int, x_goal:int, y_goal:int) -> bool:
+    if abs(x_goal - x) == 1 and abs(y_goal - y) == 1:
+        return True
+    else :
+        return False
